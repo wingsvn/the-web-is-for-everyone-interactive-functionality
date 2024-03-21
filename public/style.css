@@ -145,6 +145,8 @@ nav:target + .hamburger {
     display: none;
 }
 
+/**********    LESSONS     **********/
+
 /* section 1: phases */
 ol {
     display: flex; 
@@ -362,3 +364,34 @@ div.playlist-options button img {
     width: 1rem;
     height: 1rem;
 }
+
+
+
+/**********    STORIES     **********/
+
+section.search-container {
+    
+}
+
+div.search-box {
+    display: flex; 
+    border-radius: 0.5rem;
+    background-color: var(--text-color-white);
+    cursor: pointer;
+}
+
+div.search-box img {
+    margin: 0.5rem;
+}
+
+div.search-box input {
+    outline: none;
+    border: none;
+    background-color: var(--text-color-white);
+    color: var(--text-color-black);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem;
+}
+

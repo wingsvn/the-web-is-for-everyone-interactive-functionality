@@ -99,7 +99,7 @@
                 <a>
                     <img src="../images/play-orange.svg" alt="play-button">
                 </a>
-                <p><span>31 min. 55 sec</span></p>
+                <p>31 min. 55 sec</p>
             </div>
             <button>
                 <img src="../images/heart.svg" alt="heart">
@@ -121,11 +121,20 @@
                 <a>
                     <img src="../images/play-orange.svg" alt="play-button">
                 </a>
-                <p><span>31 min. 55 sec</span></p>
+                <p>31 min. 55 sec</p>
             </div>
-            <button>
-                <img src="../images/solid-heart.svg" alt="heart">
-            </button>
+
+            <form method="POST" action="/<%= playlist.id %>/like-or-unlike">
+                <% if (playlist.like) { %>
+                    <button type="submit" name="actie" value="unlike">
+                        <img src="../images/solid-heart.svg" alt="empty heart">
+                    </button>
+                <% } else { %>
+                    <button type="submit" name="actie" value="like">
+                        <img src="../images/heart.svg" alt="red heart">
+                    </button>
+                <% } %>
+            </form>
         </div>  
     </li>
     <% }) %>

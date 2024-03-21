@@ -11,6 +11,8 @@ app.set('views', './views')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
+let like = []
+
 // routes aanmaken
 
 // maak een GET route voor de index (home)
@@ -43,8 +45,23 @@ app.get('/lessons', function(request, response) {
         stories: storyData.data, 
         languages: languageData.data, 
         playlists: playlistData.data, 
-        audio: audioData.data}) 
+        audio: audioData.data,
+      }) 
     })
+  })
+
+// maak een POST route voor lessons (like)
+app.post('/:playlistId/like-or-unlike', function(request, response) {
+  const playlistId = request.params.playlistId;
+  const action = request.body.actie; // Retrieve the value of the 'actie' parameter from the form
+
+  // Implement the logic to handle liking or unliking the playlist
+  if (action === 'like') {
+    // Handle 'like' action
+  } else if (action === 'unlike') {
+    // Handle 'unlike' action
+  } 
+  response.redirect(303, '/lessons')
   })
 
 // maak een GET route voor stories
@@ -135,6 +152,6 @@ app.get('/profile', function(request, response) {
 
 // start de webserver
 app.set('port', process.env.PORT || 8000)
-app.listen(app.get('port'), function() {
-    console.log(`Application started on http://localhost:${app.get('port')}`)
+app.listen(app.get('port'), function () {
+  console.log(`Application started on http://localhost:${app.get('port')}`)
 })
