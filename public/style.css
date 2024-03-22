@@ -261,6 +261,7 @@ div.story-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 
 button.languages {
@@ -283,14 +284,24 @@ button.languages:first-child {
     background-color: #998DB2;
 }
 
+ul.stories-content {
+    overflow: scroll;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    /* scroll-snap-align: start; */
+    /* scroll-snap-stop: always; */
+    /* scroll-snap-type: x mandatory; */
+}
+
 ul.stories-content li {
     display: flex;
-    /* width: 20rem; */
+    /* width: 18rem; */
     width: 95vw;
     height: 5rem;
     background-color: var(--text-color-white) ;
     border-radius: 0.5rem;
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
 }
 
 ul.stories-content li .story-img {
@@ -301,8 +312,18 @@ ul.stories-content li .story-img {
     margin-top: 0.5rem;
 }
 
+/* text overflow dingen */
 ul.stories-content li div.story-content {
     margin: 0.5rem;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+ul.stories-content li div.story-content p {
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 ul.stories-content li div.story-title {
@@ -323,18 +344,19 @@ ul.stories-content li .flag-img {
 ul.stories-content li div.story-links {
     display: flex;
     justify-content: space-between;
-    margin-top: auto;
+    /* margin-top: auto; */
 }
 
 ul.stories-content li div.audio-info {
     display: flex;
-    /* margin-top: 0.1rem; */
+
+    /* margin-top: auto; */
 }
 
-/* ul.stories li div.add-options {
+ul.stories-content li div.add-options {
     display: flex;
-    margin-top: 0.1rem;
-} */
+    /* margin-top: auto; */
+}
 
 ul.stories-content li button, div.playlist-options button {
     width: 1rem;
@@ -370,7 +392,7 @@ div.playlist-options button img {
 /**********    STORIES     **********/
 
 section.search-container {
-    
+    margin-top: 2rem;
 }
 
 div.search-box {

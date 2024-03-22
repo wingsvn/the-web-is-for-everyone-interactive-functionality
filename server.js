@@ -11,7 +11,7 @@ app.set('views', './views')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
-let like = []
+let favorites = {}
 
 // routes aanmaken
 
@@ -46,22 +46,26 @@ app.get('/lessons', function(request, response) {
         languages: languageData.data, 
         playlists: playlistData.data, 
         audio: audioData.data,
+        favorites: favorites
       }) 
     })
   })
 
 // maak een POST route voor lessons (like)
 app.post('/:playlistId/like-or-unlike', function(request, response) {
-  const playlistId = request.params.playlistId;
-  const action = request.body.actie; // Retrieve the value of the 'actie' parameter from the form
+  const playlistId = Number(request.params.playlistId);
+  const action = request.body.action; // Retrieve the value of the 'actie' parameter from the form
 
   // Implement the logic to handle liking or unliking the playlist
   if (action === 'like') {
+    favorites[playlistId] = true
     // Handle 'like' action
   } else if (action === 'unlike') {
+    favorites[playlistId] = false
+
     // Handle 'unlike' action
   } 
-  response.redirect(303, '/lessons')
+  response.redirect(303, '/lessons#suggested-playlist')
   })
 
 // maak een GET route voor stories
