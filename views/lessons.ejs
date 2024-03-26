@@ -25,6 +25,7 @@
             <h3>Make a playlist!</h3>
             <p>Add your favorite stories in one playlist</p>
     </article>
+    
     <ul class="playlists-content">
         <% stories.slice(2, 3).forEach(story => { %>
         <li>
@@ -34,7 +35,7 @@
                 <a href="home/playlist">
                     <img src="../images/play-orange.svg" alt="play-button">
                 </a>
-                <p><span>31 min. 55 sec</span></p>
+                <p>31 min. 55 sec</p>
             </div>
         </li>
         <% }) %>
@@ -56,8 +57,9 @@
     <a href="/lessons/stories">Show all</a>
 </div>
 
-<section class="stories">
-    <ul class="stories-content">
+<!-- <section class="stories"> -->
+    <ul class="stories-content" style="--columns: <%= Math.ceil((stories.length / 3)) %>">
+        <!-- Totaal items in stories / 3 = een waarde deze naar boven afronden en die waarde meegeven als css variable -->
         <% stories.forEach(story => { %>
         <li>
             <img class="story-img" src="https://fdnd-agency.directus.app/assets/<%= story.image %>" alt="story image">
@@ -86,8 +88,12 @@
             </div>
         </li>
         <% }) %>
+        <!-- <li></li>
+        <li></li>
+        <li></li>
+        <li></li> -->
     </ul>
-</section>
+<!-- </section> -->
 
 
 <!-- section 4: liked playlist -->
@@ -133,11 +139,14 @@
                         <img src="../images/heart.svg" alt="red heart">
                     </button>
                 <% } else { %>
-                    <button  title="unlike playlist" type="submit" name="action" value="unlike">
+                    <button title="unlike playlist" type="submit" name="action" value="unlike">
                         <img src="../images/solid-heart.svg" alt="empty heart">
                     </button>
                 <% } %>
             </form>
+            <% if (likedPlaylist["liked-playlist"] == playlist.id) { %>
+                Het is gelukt! Jeej bliep
+            <% } %>
         </div>  
     </li>
     <% }) %>

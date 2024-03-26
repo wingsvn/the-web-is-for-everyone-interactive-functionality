@@ -46,7 +46,8 @@ app.get('/lessons', function(request, response) {
         languages: languageData.data, 
         playlists: playlistData.data, 
         audio: audioData.data,
-        favorites: favorites
+        favorites: favorites,
+        likedPlaylist: request.query
       }) 
     })
   })
@@ -64,8 +65,9 @@ app.post('/:playlistId/like-or-unlike', function(request, response) {
     favorites[playlistId] = false
 
     // Handle 'unlike' action
-  } 
-  response.redirect(303, '/lessons#suggested-playlist')
+  }
+
+  response.redirect('/lessons?liked-playlist='+playlistId+'#suggested-playlist')
   })
 
 // maak een GET route voor stories
