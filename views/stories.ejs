@@ -1,7 +1,7 @@
 <%- include('./partials/head') %>
 
 <header class="header-stories">
-    <a href="/lessons">
+    <a title="lessons page" href="/lessons">
         <img src="../images/back-bttn.png" alt="back">
     </a>
     <h1>All stories</h1>
@@ -16,7 +16,7 @@
     <div class="search-selectors"></div>
 </section>
 
-<ul class="stories-content">
+<ul class="stories">
     <% stories.forEach(story => { %>
     <li>
         <img class="story-img" src="https://fdnd-agency.directus.app/assets/<%= story.image %>" alt="story image">

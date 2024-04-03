@@ -58,7 +58,11 @@ h3, li, a {
     font-family: "poppins", sans-serif;
     font-weight: 600;
     font-style: normal;
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
+}
+
+h3 {
+    line-height: 1.4;
 }
 
 h4 {
@@ -79,6 +83,12 @@ body {
     width: 100%;
     padding: 0.5rem;
     background: linear-gradient(var(--screen-color-method), var(--screen-color-method-dark));
+}
+
+@supports (background:linear-gradient(in oklch, red 0 0)) {
+    body {
+        background: linear-gradient(in oklch, var(--screen-color-method), var(--screen-color-method-dark));
+    } 
 }
 
 header {
@@ -166,7 +176,8 @@ ol li {
     position: relative;
     width: 16rem;
     height: 2.3rem;
-    background-color: var(--method-color-green);
+    background-color: #CFBFE0;
+    /* background-color: var(--method-color-green); */
     border-radius: 0.5rem;
     overflow: hidden;
 }
@@ -174,12 +185,14 @@ ol li {
 ol li::before {
     content: counter(list-counter) "."; /* insert the counter value as content  + add "." after the number */
     counter-increment: list-counter; /* increment the counter value */
+    color: var(--screen-color-method);
 }
 
 ol li a {
     display: inline-block;  /* ensure link content flows properly */
     text-decoration: none;
-    color: var(--text-color-white);
+    /* color: var(--text-color-white); */
+    color: var(--screen-color-method);
 }
 
 ol li img {
@@ -194,7 +207,7 @@ section.playlists {
     gap: 0.5rem;
 }
 
-article {
+button.new-playlist {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -202,11 +215,15 @@ article {
     text-align: center;
     width: 8rem;
     height: 12rem;
+    border: none;
     border-radius: 0.5rem;
     background-color: #494374;
     color: var(--text-color-white);
     gap: 0.5rem;
+    cursor: pointer;
 }
+
+
 
 article img {
     width: 3rem;
@@ -276,6 +293,11 @@ button.languages {
     background-color: var(--text-color-white);
 }
 
+button.languages img {
+    width: 1.3rem;
+    height: 1rem;
+}
+
 a {
     color: var(--text-color-white);
     text-decoration: none;
@@ -286,22 +308,12 @@ button.languages:first-child {
 }
 
 ul.stories-content {
-    /* overflow-x: scroll;
-    display: grid;
-    grid-template-columns: repeat(var(--columns), 1fr);
-    gap: 0.5rem; */
-
-    overflow-x: scroll;
+    overflow-x: scroll; 
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     height: 17rem;
     gap: 0.5rem;
-
-    /* max-height: 17rem; */
-    /*
-    display: flex;
-    flex-direction: table-row; */
     scroll-snap-type: x mandatory; /* the browser has to snap to the next snap point whenever the user stops scrolling */
 }
 
@@ -333,7 +345,6 @@ ul.stories-content li div.story-content {
 }
 
 ul.stories-content li div.story-content p {
-    /* white-space: nowrap; */
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -385,6 +396,23 @@ ul.stories-content li button img {
     height: 1rem;
 }
 
+/* carrousel buttons */
+.carrousel-buttons {
+    display: flex;
+    justify-content: space-between;
+    /* z-index: 100; */
+}
+
+.carrousel-button {
+    width: 6em;
+    background-color: #CFBFE0;
+    color: var(--screen-color-method);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-weight: 600;
+}
+
 /* section 4: liked playlist */
 
 ul.playlists-content li div.playlist-options {
@@ -392,11 +420,32 @@ ul.playlists-content li div.playlist-options {
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
+    height: 13rem;
 }
 
 div.playlist-options button img {
     width: 1.5rem;
     height: 1.5rem;
+}
+
+/* section 5: suggested playlist */
+
+text {
+    width: 25em;
+    height: 2em;
+    background-color: #a890ccdc;
+    color: var(--screen-color-method);
+    padding: 1rem;
+    z-index: 10;
+    font-family: "poppins", sans-serif;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    animation: disappear 10s forwards;
+}
+
+@keyframes disappear {
+    0% { opacity: 1; } /* Start with full opacity */
+    100% { opacity: 0; } /* End with no opacity (completely disappear) */
 }
 
 /**********    STORIES     **********/
@@ -439,4 +488,77 @@ div.search-box input {
     padding: 0.5rem;
 }
 
+ul.stories li {
+    display: flex;
+    height: 5rem;
+    background-color: var(--text-color-white) ;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    scroll-snap-align: start;
+}
+
+ul.stories li .story-img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* text overflow dingen */
+ul.stories li div.story-content {
+    margin: 0.5rem;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+ul.stories li div.story-content p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ul.stories li div.story-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul.stories li .flag-img {
+    width: 1rem;
+    height: 0.75rem;
+}
+
+
+ul.stories li div.story-links {
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: auto; */
+}
+
+ul.stories li div.audio-info {
+    display: flex;
+
+    /* margin-top: auto; */
+}
+
+ul.stories li div.add-options {
+    display: flex;
+    /* margin-top: auto; */
+}
+
+ul.stories li button, div.playlist-options button {
+    width: 1rem;
+    height: 1rem;
+    border: none;
+    appearance: none;
+    background-color: inherit;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+}
+
+ul.stories li button img {
+    width: 1rem;
+    height: 1rem;
+}
 
