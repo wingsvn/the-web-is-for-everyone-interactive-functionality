@@ -42,6 +42,7 @@ Op de website kun je verschillende afspeellijsten en verhalen vinden in zowel de
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 
 Mijn html bestaat naast de header en navigatie uit 5 secties, dit zijn de verhalen en afspeellijsten. Voor de layout van de verhalen en afspeellijsten heb ik in css veel gebruik gemaakt van flex. Voor het centreren van de items/links binnen het menu heb ik grid gebruikt. Voor de animatie van het menu heb ik alleen css gebruikt, namelijk met de :target selector. Verder heb ik gegevens opgehaald uit directus API via Node. Voor het liken van afspeellijsten heb ik gebruik gemaakt van nodejs. En voor het sliden door de carrousel heb ik gebruik gemaakt van javascript.
+Verder heb ik gewerkt volgens het principe progressive enhancement. Dit houdt in dat ik in lagen mijn website bouw: de core layer: HTML, presentation layer: huisstijl, @supports, extra enhancements: javascript of andere css functies die niet alle browsers ondersteunen. 
 
 ## Installatie
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
